@@ -13,7 +13,7 @@ export class WheelpickerComponent implements OnInit {
   @Input() btnMargin = 10;
   selected: number = 0;
   showWindow: number[] = [];
-  @Output() newSelectedEvent = new EventEmitter<Option>();
+  @Output() handleNewSelectedEvent = new EventEmitter<Option>();
   upBtnMargin: number = 0;
 
   constructor() {}
@@ -26,12 +26,12 @@ export class WheelpickerComponent implements OnInit {
   handleClickPrevBtn() {
     const removed = this.options.shift();
     this.options = [...this.options, removed as Option];
-    this.newSelectedEvent.emit(this.options[this.selected]);
+    this.handleNewSelectedEvent.emit(this.options[this.selected]);
   }
 
   handleClickNextBtn() {
     const removed = this.options.pop();
     this.options = [removed as Option, ...this.options];
-    this.newSelectedEvent.emit(this.options[this.selected]);
+    this.handleNewSelectedEvent.emit(this.options[this.selected]);
   }
 }
