@@ -1,0 +1,25 @@
+@keyframes growMe {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.option--selected {
+  display: relative;
+  font-size: x-large;
+  font-weight: 500;
+  animation: 0.3s ease-in-out 0s 1 growMe;
+}
+.option--selected__unit {
+  display: absolute;
+  text-align: center;
+}
+
+.option--not-selected {
+  opacity: 0.1;
+}

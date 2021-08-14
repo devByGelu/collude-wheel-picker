@@ -1,0 +1,22 @@
+.wheel-picker__container {
+  display: flex;
+  align-items: center;
+}
+.wheel-picker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.wheel-picker-btn {
+  opacity: 0.5;
+}
+.wheel-picker__options {
+  display: grid;
+  grid-gap: 13px;
+  justify-items: center;
+}
+
+.wheel-picker__unit {
+  font-size: x-small;
+  margin-left: 10px;
+}

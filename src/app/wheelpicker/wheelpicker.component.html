@@ -1,0 +1,30 @@
+<div class="wheel-picker__container">
+  <div class="wheel-picker">
+    <button
+      mat-icon-button
+      (click)="handleClickNextBtn()"
+      class="wheel-picker__up-btn wheel-picker-btn"
+      [style.margin-bottom]="btnMargin + 'px'"
+    >
+      <mat-icon aria-label="up button">expand_less</mat-icon>
+    </button>
+    <div class="wheel-picker__options">
+      <app-wheelpicker-option
+        *ngFor="let w of showWindow; let i = index"
+        [value]="options[w].viewValue"
+        [isSelected]="i === selected"
+      >
+      </app-wheelpicker-option>
+    </div>
+
+    <button
+      mat-icon-button
+      (click)="handleClickPrevBtn()"
+      class="wheel-picker__down-btn wheel-picker-btn"
+      [style.margin-top]="btnMargin + 'px'"
+    >
+      <mat-icon aria-label="down button">expand_more</mat-icon>
+    </button>
+  </div>
+  <div *ngIf="unit !== undefined" class="wheel-picker__unit">{{ unit }}</div>
+</div>
