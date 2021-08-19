@@ -66,4 +66,10 @@ export class WheelpickerComponent implements OnInit {
     if (scrolledUp) this.handleClickDownBtn();
     else this.handleClickUpBtn();
   }
+  handlePanUp() {
+    this.goUp(1);
+  }
+  handlePanDown() {
+    this.goDown(1);
+  }
 }

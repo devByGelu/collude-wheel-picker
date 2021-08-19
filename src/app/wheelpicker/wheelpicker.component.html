@@ -1,4 +1,9 @@
-<div class="wheel-picker__container" (wheel)="handleWheel($event)">
+<div
+  class="wheel-picker__container"
+  (wheel)="handleWheel($event)"
+  (panup)="handlePanUp()"
+  (pandown)="handlePanDown()"
+>
   <div class="wheel-picker">
     <button
       mat-icon-button
