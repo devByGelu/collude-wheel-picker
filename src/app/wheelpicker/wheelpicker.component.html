@@ -13,6 +13,7 @@
         *ngFor="let w of showWindow; let i = index"
         [value]="options[w].viewValue"
         [isSelected]="i === selected"
+        (click)="handleSkip(i)"
       >
       </app-wheelpicker-option>
     </div>
