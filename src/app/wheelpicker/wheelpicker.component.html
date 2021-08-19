@@ -1,8 +1,8 @@
-<div class="wheel-picker__container">
+<div class="wheel-picker__container" (wheel)="handleWheel($event)">
   <div class="wheel-picker">
     <button
       mat-icon-button
-      (click)="handleClickNextBtn()"
+      (click)="handleClickUpBtn()"
       class="wheel-picker__up-btn wheel-picker-btn"
       [style.margin-bottom]="btnMargin + 'px'"
     >
@@ -19,7 +19,7 @@
 
     <button
       mat-icon-button
-      (click)="handleClickPrevBtn()"
+      (click)="handleClickDownBtn()"
       class="wheel-picker__down-btn wheel-picker-btn"
       [style.margin-top]="btnMargin + 'px'"
     >
