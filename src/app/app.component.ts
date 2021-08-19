@@ -16,7 +16,7 @@ export class AppComponent {
   ];
   unit = 'day';
   title = 'wheel-picker';
-  windowLength = 3;
+  windowLength = 5;
 
   selectedChanged(selected: Option) {
     console.log(selected);

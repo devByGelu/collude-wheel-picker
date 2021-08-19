@@ -24,15 +24,40 @@ export class WheelpickerComponent implements OnInit {
     this.selected = Math.round((this.showWindow.length - 1) / 2);
   }
 
+  goUp(n: number) {
+    for (let i = 0; i < n; i++) {
+      const removed = this.options.pop();
+      this.options = [removed as Option, ...this.options];
+    }
+  }
+  goDown(n: number) {
+    for (let i = 0; i < n; i++) {
+      const removed = this.options.shift();
+      this.options = [...this.options, removed as Option];
+    }
+  }
+
+  // When user clicks an option, he intends to skip to that option
+  handleSkip(to: number) {
+    const validSkip = to !== this.selected;
+    if (validSkip) {
+      const skippingDown = to > this.selected;
+      if (skippingDown) {
+        this.goDown(to - this.selected);
+      } else {
+        this.goUp(this.selected - to);
+      }
+    }
+    this.handleNewSelectedEvent.emit(this.options[this.selected]);
+  }
+
   handleClickUpBtn() {
-    const removed = this.options.shift();
-    this.options = [...this.options, removed as Option];
+    this.goUp(1);
     this.handleNewSelectedEvent.emit(this.options[this.selected]);
   }
 
   handleClickDownBtn() {
-    const removed = this.options.pop();
-    this.options = [removed as Option, ...this.options];
+    this.goDown(1);
     this.handleNewSelectedEvent.emit(this.options[this.selected]);
   }
 
