@@ -29,12 +29,14 @@ export class WheelpickerComponent implements OnInit {
       const removed = this.options.pop();
       this.options = [removed as Option, ...this.options];
     }
+    this.handleNewSelectedEvent.emit(this.options[this.selected]);
   }
   goDown(n: number) {
     for (let i = 0; i < n; i++) {
       const removed = this.options.shift();
       this.options = [...this.options, removed as Option];
     }
+    this.handleNewSelectedEvent.emit(this.options[this.selected]);
   }
 
   // When user clicks an option, he intends to skip to that option
@@ -48,17 +50,14 @@ export class WheelpickerComponent implements OnInit {
         this.goUp(this.selected - to);
       }
     }
-    this.handleNewSelectedEvent.emit(this.options[this.selected]);
   }
 
   handleClickUpBtn() {
     this.goUp(1);
-    this.handleNewSelectedEvent.emit(this.options[this.selected]);
   }
 
   handleClickDownBtn() {
     this.goDown(1);
-    this.handleNewSelectedEvent.emit(this.options[this.selected]);
   }
 
   handleWheel(event: WheelEvent) {
@@ -67,9 +66,15 @@ export class WheelpickerComponent implements OnInit {
     else this.handleClickUpBtn();
   }
   handlePanUp() {
-    this.goUp(1);
+    this.goDown(1);
   }
   handlePanDown() {
+    this.goUp(1);
+  }
+  handleSwipeUp() {
     this.goDown(1);
+  }
+  handleSwipeDown() {
+    this.goUp(1);
   }
 }
